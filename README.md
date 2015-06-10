@@ -10,3 +10,6 @@ ln -s /usr/bin/nodejs /usr/bin/node                  //Ubuntu renames this "inco
 
 npm install express body-parser mongoose bson-ext
 
+
+[Brackets on Ubuntu]
+http://revryl.com/2014/05/05/brackets-debian-ubuntu/
