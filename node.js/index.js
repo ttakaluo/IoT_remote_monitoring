@@ -14,20 +14,21 @@ app.use('/',express.static(__dirname + '/public'));   //Handles all static files
 
 app.use(bodyParser());
 
-app.get("/sauna", function(req,res){
+app.get("/room", function(req,res){
     
-    database.getSaunas(req,res);
+    database.getRooms(req,res);
 });
 
 app.post("/new", function(req,res){
    
-    var sauna = {
+    var room = {
         
-        temperature:req.body.temperature,
-        time:req.body.time
+	name:req.body.name,
+	temperature:req.body.temperature,
+	time:req.body.time
     }
     
-    database.insertSauna(sauna,req,res);
+    database.insertRoom(room,req,res);
     
     //console.log("post method for /new path");
     //console.log(req.body);

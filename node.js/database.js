@@ -11,36 +11,41 @@ mongoose.connect(uri,function(err,succ){
     }
 });
 
-var Schema = mongoose.Schema;
+var roomSchema = mongoose.Schema;
 
-var sauna = new Schema({
-    
-    temperature:String,
-    time:String
+var room = new roomSchema({
+
+	name:String,
+	temperature:String,
+	date:String
+
 });
 
-var Sauna = mongoose.model("Sauna", §sauna);
+//Room model uses roomSchema structure
+//Mongoose also creates a MongoDB collection called Rooms for these documents.
 
-exports.insertSauna = function(sauna,req,res){
+var Room = mongoose.model("Room", room);
+
+exports.insertRoom = function(room,req,res){
     
-    var tmp = new Sauna();
-    tmp.temperature = sauna.temperature;
-    tmp.time = sauna.time;
+	var tmp = new Room();
+	tmp.name = room.name;
+	tmp.temperature = room.temperature;
+	tmp.time = room.time;
     
-    tmp.save(function(err){
-        console.log(err);
-    });
-    
-    //res.send("Sauna Added");
-    res.redirect("/");
+	tmp.save(function(err){
+		console.log(err);
+	});
+
+	res.redirect("/");
 }
 
-exports.getSauna = function(req,res){
+exports.getRooms = function(req,res){
 
-    Sauna.find().exec(function(err,data){
+	Room.find().exec(function(err,data){
     
-        console.log(err);  //ignored
-        console.log(data);
-        res.send(data);
-    });
+		console.log(err);  //ignored
+		console.log(data);
+		res.send(data);
+	});
 }

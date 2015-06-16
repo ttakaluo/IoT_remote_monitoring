@@ -6,7 +6,7 @@ window.onload = function(event){
     //Step2: Define callback to catch response
     xhr.onreadystatechange = ready;
     //step3: Define method, path etc.
-    xhr.open("GET","/sauna", true);
+    xhr.open("GET","/room", true);
     //step4: Send request
     xhr.send();
     
@@ -16,12 +16,12 @@ window.onload = function(event){
          
             var data = JSON.parse(xhr.responseText);
             
-            var parent = document.getElementById("saunas");
+            var parent = document.getElementById("rooms");
                 
                 for(var i = 0; i < data.length; i++) {
                  
                     var liel = document.createElement("li");
-                    liel.innerHTML = data[i].temperature + " " + data[i].time;
+                    liel.innerHTML = data[i].name + " " + data[i].temperature + " " + data[i].time;
                     parent.appendChild(liel);
                 }
         }
