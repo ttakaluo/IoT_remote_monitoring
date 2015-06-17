@@ -1,6 +1,25 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var database = require("./database");
+
+var net = require('net');
+var jsonSocket = require('json-socket');
+
+var port = 4501;
+var server = net.createServer();
+server.listen(port);
+server.on('connection', function(socket) {
+
+	socket = new jsonSocket(socket);
+	socket.on('message', function(message) {
+
+		//var result = message.name + message.b;
+		var result = message;
+		console.log(result);
+		socket.sendEndMessage({result: 'received'});
+	});
+});
+
 var app = express();
 
 app.use(function(req,res,next){
