@@ -28,11 +28,13 @@ app.get("/room", function(req,res){
 
 app.post("/new", function(req,res){
    
+    var d = new Date();
+    
     var room = {
         
-	name:req.body.name,
-	temperature:req.body.temperature,
-	time:req.body.time
+        name:req.body.name,
+        temperature:req.body.temperature,
+        time:d.valueOf()
     }
     
     database.insertRoom(room,req,res);

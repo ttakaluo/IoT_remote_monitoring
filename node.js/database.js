@@ -17,7 +17,7 @@ var room = new roomSchema({
 
 	name:String,
 	temperature:String,
-	time:String
+	time:Number
 
 });
 
