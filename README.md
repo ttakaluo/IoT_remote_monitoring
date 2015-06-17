@@ -13,3 +13,7 @@ npm install express body-parser mongoose bson-ext
 
 [Brackets on Ubuntu]
 http://revryl.com/2014/05/05/brackets-debian-ubuntu/
+
+[npm on raspbian]
+
+needs first:  npm config set registry http://registry.npmjs.org/
