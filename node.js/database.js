@@ -17,7 +17,7 @@ var room = new roomSchema({
 
 	name:String,
 	temperature:String,
-	date:String
+	time:String
 
 });
 
@@ -38,6 +38,20 @@ exports.insertRoom = function(room,req,res){
 	});
 
 	res.redirect("/");
+}
+
+exports.insertRoom_over_tcp = function(room){
+
+	var tmp = new Room();
+	tmp.name = room.name;
+	tmp.temperature = room.temperature;
+	tmp.time = room.time;
+
+	tmp.save(function(err){
+		console.log(err);
+	});
+
+	return ("Stored in database");
 }
 
 exports.getRooms = function(req,res){

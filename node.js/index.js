@@ -7,18 +7,6 @@ var jsonSocket = require('json-socket');
 
 var port = 4501;
 var server = net.createServer();
-server.listen(port);
-server.on('connection', function(socket) {
-
-	socket = new jsonSocket(socket);
-	socket.on('message', function(message) {
-
-		//var result = message.name + message.b;
-		var result = message;
-		console.log(result);
-		socket.sendEndMessage({result: 'received'});
-	});
-});
 
 var app = express();
 
@@ -57,3 +45,15 @@ app.post("/new", function(req,res){
 
 app.listen("4500");
 
+server.listen(port);
+server.on('connection', function(socket) {
+
+	socket = new jsonSocket(socket);
+	socket.on('message', function(message) {
+
+		//var result = message.name + message.b;
+		console.log(message);
+		var result = database.insertRoom_over_tcp(message);
+		socket.sendEndMessage({result: result});
+	});
+});
