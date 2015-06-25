@@ -17,3 +17,8 @@ http://revryl.com/2014/05/05/brackets-debian-ubuntu/
 [npm on raspbian]
 
 needs first:  npm config set registry http://registry.npmjs.org/
+
+[rasbian keep ssh alive]
+in /etc/ssh/sshd_config
+ServerAliveInterval 300
+ServerAliveCountMax 3
